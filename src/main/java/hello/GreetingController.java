@@ -11,8 +11,8 @@ public class GreetingController {
     private static final String template = "Hello, %s!";
     private final AtomicLong counter = new AtomicLong();
 
-    @RequestMapping("/compilar")
-    public BodyCompilado compilar(@RequestParam(value="name", defaultValue="World") String name) {
+    @RequestMapping("/greeting")
+    public BodyCompilado greeting(@RequestParam(value="name", defaultValue="World") String name) {
 //        return new Greeting(counter.incrementAndGet(),"Hola niño");
     	return new BodyCompilado("FF","codigoFuente");
     }
