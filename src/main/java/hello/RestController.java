@@ -10,7 +10,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 @RestController
-public class GreetingController {
+public class RestController {
 
     private static final String template = "Hello, %s!";
     private final AtomicLong counter = new AtomicLong();
@@ -20,7 +20,7 @@ public class GreetingController {
     	return new Accion("OK","Codigo Compilado esta Aqui");
     }
     @RequestMapping("/compilar")
-    public List<Accion> compilar(@RequestParam(value="name", defaultValue="World") String name) {
+    public List<Accion> compilar(@RequestParam(value="id", defaultValue="World") String id) {
     	List<Accion> list= new ArrayList<Accion>();
     	list.add(new Accion("Error","Error 1"));
     	list.add(new Accion("OK","4762893720984720"));
@@ -28,7 +28,7 @@ public class GreetingController {
     }
 
     @RequestMapping("/ejecutarPaso")
-    public List<Accion> ejecutar(@RequestParam(value="name", defaultValue="World") String id) {
+    public List<Accion> ejecutar(@RequestParam(value="id", defaultValue="World") String id) {
     	List<Accion> list= new ArrayList<Accion>();
     	list.add(new Accion("Error","Error 1"));
     	list.add(new Accion("Error","Error 2"));
