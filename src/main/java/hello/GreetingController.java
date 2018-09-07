@@ -13,10 +13,10 @@ public class GreetingController {
     private static final String template = "Hello, %s!";
     private final AtomicLong counter = new AtomicLong();
 
-    @PostMapping("/compilar")
-    public BodyCompilado compilar(@RequestBody BodyCompilado body) {
-    	return new BodyCompilado("FF","codigoFuente");
-    }
+  //  @PostMapping("/compilar")
+    //public BodyCompilado compilar(@RequestBody BodyCompilado body) {
+   // 	return new BodyCompilado("FF","codigoFuente");
+    //}
      @RequestMapping("/compilar")
     public List<Accion> compilar(@RequestParam(value="name", defaultValue="World") String name) {
     	List<Accion> list= new ArrayList<Accion>();
