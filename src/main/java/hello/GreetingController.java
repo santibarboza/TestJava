@@ -4,6 +4,8 @@ import java.util.concurrent.atomic.AtomicLong;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -13,10 +15,10 @@ public class GreetingController {
     private static final String template = "Hello, %s!";
     private final AtomicLong counter = new AtomicLong();
 
-  //  @PostMapping("/compilar")
-    //public BodyCompilado compilar(@RequestBody BodyCompilado body) {
-   // 	return new BodyCompilado("FF","codigoFuente");
-    //}
+    @PostMapping("/compilar")
+    public BodyCompilado compilar(@RequestBody BodyCompilado body) {
+    	return new Accion("OK","Codigo Compilado esta Aqui");
+    }
      @RequestMapping("/compilar")
     public List<Accion> compilar(@RequestParam(value="name", defaultValue="World") String name) {
     	List<Accion> list= new ArrayList<Accion>();
