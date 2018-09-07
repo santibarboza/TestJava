@@ -17,4 +17,10 @@ public class BodyCompilado {
     public String getCodigoFuente() {
         return codigoFuente;
     }
+    public void setDireccionInicio(String direccionInicio) {
+        this.direccionInicio = direccionInicio;
+    }
+    public void setCodigoFuente(String codigoFuente) {
+        this.codigoFuente = codigoFuente;
+    }
 }
