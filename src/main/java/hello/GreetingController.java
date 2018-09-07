@@ -19,21 +19,20 @@ public class GreetingController {
     public Accion compilarPost(@RequestBody BodyCompilado body) {
     	return new Accion("OK","Codigo Compilado esta Aqui");
     }
-     @RequestMapping("/compilar")
+    @RequestMapping("/compilar")
     public List<Accion> compilar(@RequestParam(value="name", defaultValue="World") String name) {
+    	List<Accion> list= new ArrayList<Accion>();
+    	list.add(new Accion("Error","Error 1"));
+    	list.add(new Accion("OK","4762893720984720"));
+    	return list;
+    }
+
+    @RequestMapping("/ejecutarPaso")
+    public List<Accion> compilar(@RequestParam(value="name", defaultValue="World") String id) {
     	List<Accion> list= new ArrayList<Accion>();
     	list.add(new Accion("Error","Error 1"));
     	list.add(new Accion("Error","Error 2"));
     	return list;
     }
-
-   //	@PostMapping("/compilar")
-	//public Greeting newEmployee(@RequestBody Employee newEmployee) {
-//		return new Greeting(1,"compilar");
-//	}
-//	@RequestMapping("/")
-  //  public Greeting greeting(@RequestParam(value="name", defaultValue="World") String name) {
-    //    return new Greeting(counter.incrementAndGet(),"Hola niño");
-    //}
 
 }
