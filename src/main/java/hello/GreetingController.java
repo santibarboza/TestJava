@@ -16,7 +16,7 @@ public class GreetingController {
     private final AtomicLong counter = new AtomicLong();
 
     @PostMapping("/compilar")
-    public BodyCompilado compilar(@RequestBody BodyCompilado body) {
+    public Accion compilar(@RequestBody BodyCompilado body) {
     	return new Accion("OK","Codigo Compilado esta Aqui");
     }
      @RequestMapping("/compilar")
