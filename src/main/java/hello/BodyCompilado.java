@@ -5,7 +5,7 @@ public class BodyCompilado {
     private final String direccionInicio;
     private final String codigoFuente;
 
-    public Greeting(String direccionInicio, String codigoFuente) {
+    public BodyCompilado(String direccionInicio, String codigoFuente) {
         this.direccionInicio = direccionInicio;
         this.codigoFuente = codigoFuente;
     }
