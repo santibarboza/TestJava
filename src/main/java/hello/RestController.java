@@ -22,8 +22,9 @@ public class RestController {
     @RequestMapping("/compilar")
     public List<Accion> compilar(@RequestParam(value="id", defaultValue="World") String id) {
     	List<Accion> list= new ArrayList<Accion>();
-    	list.add(new Accion("Error","Error 1"));
-    	list.add(new Accion("OK","4762893720984720"));
+    	//list.add(new Accion("Error","Error Lexico: BlaBlaBla"));
+    	list.add(new Accion("OK","El Programa Compilo Correctamente"));
+    	list.add(new Accion("setID","128317293"));
     	return list;
     }
 
