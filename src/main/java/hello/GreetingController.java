@@ -28,7 +28,7 @@ public class GreetingController {
     }
 
     @RequestMapping("/ejecutarPaso")
-    public List<Accion> compilar(@RequestParam(value="name", defaultValue="World") String id) {
+    public List<Accion> ejecutar(@RequestParam(value="name", defaultValue="World") String id) {
     	List<Accion> list= new ArrayList<Accion>();
     	list.add(new Accion("Error","Error 1"));
     	list.add(new Accion("Error","Error 2"));
