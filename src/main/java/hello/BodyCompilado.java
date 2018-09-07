@@ -2,8 +2,8 @@ package hello;
 
 public class BodyCompilado {
 
-    private final String direccionInicio;
-    private final String codigoFuente;
+    private  String direccionInicio;
+    private  String codigoFuente;
 
     public BodyCompilado(String direccionInicio, String codigoFuente) {
         this.direccionInicio = direccionInicio;
