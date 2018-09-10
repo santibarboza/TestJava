@@ -16,8 +16,9 @@ public class RestController {
     private final AtomicLong counter = new AtomicLong();
 
     @PostMapping("/compilarPost")
-    public Accion compilarPost(@RequestBody BodyCompilado body) {
-    	return new Accion("OK","Codigo Compilado esta Aqui");
+    public BodyCompilado compilarPost(@RequestBody BodyCompilado body) {
+        return body;
+//    	return new Accion("OK","Codigo Compilado esta Aqui");
     }
     @RequestMapping("/compilar")
     public List<Accion> compilar(@RequestParam(value="id", defaultValue="World") String id) {
