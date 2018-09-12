@@ -10,7 +10,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 @RestController
-public class RestController {
+public class OCRestController {
 
     private static final String template = "Hello, %s!";
     private final AtomicLong counter = new AtomicLong();
