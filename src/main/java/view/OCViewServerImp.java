@@ -47,7 +47,7 @@ public class OCViewServerImp implements OCViewServer{
 	public void updateInstrucionView(String instruccion){}
 	public String pedirDialogo(String pedido){return "";}
 	public boolean pedirAbrirArchivo(){return true;}
-	public boolean guardarArchivo(){return true}
+	public boolean guardarArchivo(){return true;}
 	public File recuperarArchivo(){return NULL;}
 	public void habilitarOpcionesdeEjecucion(){}
 	public void habilitarOpcionesdeEjecucionPasoaPaso(){}

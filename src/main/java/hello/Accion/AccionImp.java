@@ -5,7 +5,7 @@ public class AccionImp implements Accion{
     private final String codigoAccion;
     private final String parametro;
 
-    public Accion(String codigoAccion, String parametro) {
+    public AccionImp(String codigoAccion, String parametro) {
         this.codigoAccion = codigoAccion;
         this.parametro = parametro;
     }
