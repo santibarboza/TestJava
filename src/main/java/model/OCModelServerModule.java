@@ -1,22 +1,6 @@
 package model;
 
-import ogradle.*;
-import model.Analizadores.AnalizadorLexico;
-import model.Analizadores.AnalizadorLexicoImpl;
-import model.Analizadores.AnalizadorSintacticoySemantico;
-import model.Analizadores.AnalizadorSintacticoySemanticoImpl;
-import model.Analizadores.ReglasImpl;
-import model.Archivos.ArchivoAbstractFactory;
-import model.Archivos.ArchivoConcreteFactory;
-import model.Ejecucion.Ejecucion;
-import model.Ejecucion.EjecucionImpl;
-import model.Mapeo.MapFactoryImpl;
-import model.RepresentacionMemoria.Memoria;
-import model.RepresentacionMemoria.MemoriaImpl;
-import model.RepresentacionMemoria.RepresentacionDeLaMemoria;
-import model.RepresentacionMemoria.RepresentacionDeLaMemoriaImpl;
-import model.RepresentacionMemoria.TabladeEtiquetas;
-import model.RepresentacionMemoria.TabladeEtiquetasImpl;
+import model.*;
 
 public class OCModelServerModule {
 	private static OCModelServerModule instance;

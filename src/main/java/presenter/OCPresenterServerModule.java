@@ -1,7 +1,7 @@
 package presenter;
 
-import model.OCModelServerModule;
-import ogradle.*;
+import model.*;
+import view.*;
 
 public class OCPresenterServerModule {
 	private static OCPresenterServerModule instance;
