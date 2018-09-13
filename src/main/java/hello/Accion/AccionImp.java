@@ -1,6 +1,6 @@
-package hello;
+package hello.Accion;
 
-public class Accion {
+public class AccionImp implements Accion{
 
     private final String codigoAccion;
     private final String parametro;
