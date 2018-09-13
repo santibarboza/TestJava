@@ -30,6 +30,7 @@ public class OCRestController {
         Map<Integer,String> map= new  HashMap<Integer,String>();
         map.put(123, "hola");
         map.put(3, "chau");
+        map.put(4, "chsaa");
     	return map;
     }
 
