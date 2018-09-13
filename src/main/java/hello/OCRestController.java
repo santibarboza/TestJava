@@ -10,6 +10,14 @@ import java.util.ArrayList;
 import java.util.List;
 import hello.Accion.*;
 
+
+
+
+import java.util.Map;
+import java.util.HashMap;
+
+
+
 @RestController
 public class OCRestController {
 
@@ -17,14 +25,21 @@ public class OCRestController {
     public Accion compilarPost(@RequestBody BodyCompilado body) {
     	return new AccionImp("OK","Codigo Compilado esta Aqui");
     }
-    @RequestMapping("/compilar")
-    public List<Accion> compilar(@RequestParam(value="id", defaultValue="World") String id) {
-    	List<Accion> list= new ArrayList<Accion>();
-    	list.add(new AccionImp("OK","El Programa Compilo Correctamente"));
-    	list.add(new AccionImp("setID","128317293"));
-    	return list;
+    @RequestMapping("/mapeo")
+    public Map<Integer,String> mapeo(@RequestParam(value="id", defaultValue="World") String id) {
+        Map<Integer,String> map= new  HashMap<Integer,String>();
+        map.put(123, "hola");
+        map.put(3, "chau");
+    	return map;
     }
 
+    @RequestMapping("/compilar")
+    public List<Accion> compilar(@RequestParam(value="id", defaultValue="World") String id) {
+        List<Accion> list= new ArrayList<Accion>();
+        list.add(new AccionImp("OK","El Programa Compilo Correctamente"));
+        list.add(new AccionImp("setID","128317293"));
+        return list;
+    }
     @RequestMapping("/ejecutarPaso")
     public List<Accion> ejecutar(@RequestParam(value="id", defaultValue="World") String id) {
     	List<Accion> list= new ArrayList<Accion>();
