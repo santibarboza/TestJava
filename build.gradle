@@ -31,3 +31,7 @@ dependencies {
     testCompile('com.jayway.jsonpath:json-path')
 }
 
+dependencies {
+    compile 'org.mongodb:mongodb-driver:3.3.0'
+}
+    
