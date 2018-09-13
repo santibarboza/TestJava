@@ -3,7 +3,7 @@ import model.RepresentacionMemoria.Memoria;
 import com.mongodb.*;
 import java.util.ArrayList;
 import java.util.List;
-import servers.model.*;
+import model.*;
 import model.RepresentacionMemoria.*;
 import model.Mapeo.*;
  
