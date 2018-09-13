@@ -36,9 +36,15 @@ public class OCRestController {
 
     @RequestMapping("/compilar")
     public List<Accion> compilar(@RequestParam(value="id", defaultValue="World") String id) {
+        Map<Integer,String> map= new  HashMap<Integer,String>();
+        map.put(123, "hola");
+        map.put(3, "chau");
+        map.put(4, "chsaa");
+
         List<Accion> list= new ArrayList<Accion>();
         list.add(new AccionImp("OK","El Programa Compilo Correctamente"));
         list.add(new AccionImp("setID","128317293"));
+        list.add(new AccionCambio("setID",map));
         return list;
     }
     @RequestMapping("/ejecutarPaso")
