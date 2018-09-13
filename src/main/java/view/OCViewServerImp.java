@@ -48,13 +48,13 @@ public class OCViewServerImp implements OCViewServer{
 	public String pedirDialogo(String pedido){return "";}
 	public boolean pedirAbrirArchivo(){return true;}
 	public boolean guardarArchivo(){return true;}
-	public File recuperarArchivo(){return NULL;}
+	public File recuperarArchivo(){return null;}
 	public void habilitarOpcionesdeEjecucion(){}
 	public void habilitarOpcionesdeEjecucionPasoaPaso(){}
 	public void deshabilitarOpcionesdeEjecucionPasoaPaso(){}
 	public void habilitarGuardarPanel(){}
 	public void deshabilitarGuardarPanel(){}
-	public void habilitarOpcionesdeCompilacion();
+	public void habilitarOpcionesdeCompilacion(){}
 	public void mostrarMemoria(){}
 	public void mostrarAyuda(){}
 
