@@ -16,7 +16,7 @@ public class OCViewServerModule {
 	  }
 
 	  public OCView openOCWindow(OCPresenter ocPresenter) {
-	    OCViewServerImpl ocView = new OCViewServerImpl(ocPresenter);
+	    OCViewServerImp ocView = new OCViewServerImp(ocPresenter);
 	    return ocView;
 	  }
 }

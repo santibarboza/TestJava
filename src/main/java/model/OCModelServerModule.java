@@ -1,6 +1,10 @@
 package model;
 
 import model.*;
+import model.Analizadores.*;
+import model.Ejecucion.*;
+import model.Mapeo.*;
+import model.RepresentacionMemoria.*;
 
 public class OCModelServerModule {
 	private static OCModelServerModule instance;
