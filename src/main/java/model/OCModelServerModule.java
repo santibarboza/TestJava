@@ -2,6 +2,7 @@ package model;
 
 import model.*;
 import model.Analizadores.*;
+import model.Archivos.*;
 import model.Ejecucion.*;
 import model.Mapeo.*;
 import model.RepresentacionMemoria.*;

@@ -2,6 +2,7 @@ package presenter;
 
 import model.*;
 import view.*;
+import model.RepresentacionMemoria.*;
 
 public class OCPresenterServerModule {
 	private static OCPresenterServerModule instance;
