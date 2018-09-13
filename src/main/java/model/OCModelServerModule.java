@@ -1,5 +1,6 @@
 package model;
 
+import ogradle.*;
 import model.Analizadores.AnalizadorLexico;
 import model.Analizadores.AnalizadorLexicoImpl;
 import model.Analizadores.AnalizadorSintacticoySemantico;
