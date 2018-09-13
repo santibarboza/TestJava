@@ -5,7 +5,7 @@ public class AccionCambio implements Accion{
     private final String codigoAccion;
     private final Map<Integer,String> parametro;
 
-    public AccioCambio(String codigoAccion, Map<Integer,String> parametro) {
+    public AccionCambio(String codigoAccion, Map<Integer,String> parametro) {
         this.codigoAccion = codigoAccion;
         this.parametro = parametro;
     }
