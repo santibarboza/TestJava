@@ -7,10 +7,12 @@ import java.util.ArrayList;
 import hello.Accion.*;
 
 public class OCViewServerImp implements OCViewServer{
+	private OCPresenter ocPresenter;
 	protected List <Accion> accionesActuales;
 	protected String contenidoActual;
 
-	public OCViewServerImp(){
+	public OCViewServerImp(OCPresenter ocController) {
+	    this.ocPresenter = ocController;
 		accionesActuales= new ArrayList<Accion>();		
 	}
 	public void updateTextoTutorial(String texto){
