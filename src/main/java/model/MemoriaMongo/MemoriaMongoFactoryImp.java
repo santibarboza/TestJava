@@ -11,7 +11,7 @@ import org.bson.Document;
 
 public class MemoriaMongoFactoryImp{
 	public MemoriaMongoFactoryImp(){}
-	public MemoriaMongo iniciarMemoria(Memoria Memoria, String id){
+	public MemoriaMongo iniciarMemoria(Memoria memoria, String id){
 		String Mongo_URI="mongodb://ocuns:ocuns22@ds141401.mlab.com:41401/ocuns";
   		MongoClient mongoClient = new MongoClient(new MongoClientURI(Mongo_URI));
   		DB database = mongoClient.getDB("ocuns");
