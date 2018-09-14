@@ -78,7 +78,7 @@ public class OCRestController {
     }
 
     @PostMapping("/test4")
-    public BodyCompilado test4(BodyCompilado body) {
+    public BodyCompilado test4(@ModelAttribute BodyCompilado body) {
         return body;
     }
     private List<Accion> obtenerAcciones(OCViewServer view, String id){
