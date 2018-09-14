@@ -5,6 +5,7 @@ import presenter.OCPresenter;
 
 public class OCViewServerModule {
 	  private static OCViewServerModule instance;
+	  private OCViewServer ocView ;
 
 	  private OCViewServerModule() { }
 
@@ -12,11 +13,14 @@ public class OCViewServerModule {
 	    if (instance == null) {
 	      instance = new OCViewServerModule();
 	    }
-	    return instance;
+	    return instance;9
 	  }
 
 	  public OCView openOCWindow(OCPresenter ocPresenter) {
-	    OCViewServerImp ocView = new OCViewServerImp(ocPresenter);
+	    ocView= new OCViewServerImp(ocPresenter);
 	    return ocView;
+	  }
+	  public  OCViewServer getOCView(){
+	  	return ocView; 
 	  }
 }

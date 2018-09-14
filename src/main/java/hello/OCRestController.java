@@ -16,6 +16,9 @@ import hello.Accion.*;
 import java.util.Map;
 import java.util.HashMap;
 
+import presenter.*;
+import view.*;
+
 
 
 @RestController
@@ -49,10 +52,22 @@ public class OCRestController {
     }
     @RequestMapping("/ejecutarPaso")
     public List<Accion> ejecutar(@RequestParam(value="id", defaultValue="World") String id) {
-    	List<Accion> list= new ArrayList<Accion>();
-    	list.add(new AccionImp("Error","Error 1"));
-    	list.add(new AccionImp("Error","Error 2"));
-    	return list;
+        List<Accion> list= new ArrayList<Accion>();
+        list.add(new AccionImp("Error","Error 1"));
+        list.add(new AccionImp("Error","Error 2"));
+        return list;
     }
+
+    @RequestMapping("/test1")
+    public List<Accion> test1(@RequestParam(value="id", defaultValue="111") String id) {
+        OCPresenter presenter = OCPresenterServerModule.getInstance().startApplication();
+        OCViewServer view=OCPresenterServerModule.getInstance().getOCView();
+        presenter.updatePCView("PCViejo");
+        presenter.updatePCView("PCNuevo");
+        presenter.updateLogs("LogNuevo");
+        return view.obtenerAcciones();
+    }
+
+
 
 }

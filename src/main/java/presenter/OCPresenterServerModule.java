@@ -35,5 +35,8 @@ public class OCPresenterServerModule {
 	  public static Memoria getMemoria(){
 	  	return OCModelServerModule.getInstance().getMemoria();
 	  }
+	  public static OCViewServer getOCView(){
+	  	return OCViewServerModule.getInstance().getOCView();
+	  }
 
 }
