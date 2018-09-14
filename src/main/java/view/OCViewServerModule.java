@@ -13,7 +13,7 @@ public class OCViewServerModule {
 	    if (instance == null) {
 	      instance = new OCViewServerModule();
 	    }
-	    return instance;9
+	    return instance;
 	  }
 
 	  public OCView openOCWindow(OCPresenter ocPresenter) {
