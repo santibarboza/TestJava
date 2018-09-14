@@ -29,7 +29,7 @@ public class OCRestController {
     public List<Accion> compilarPost(@RequestBody BodyCompilado body) {
         OCPresenter presenter = OCPresenterServerModule.getInstance().startApplication();
         OCViewServer view=OCPresenterServerModule.getInstance().getOCView();
-        //presenter.onEventCompilar(body.getCodigoFuente(),body.getDireccionInicio());
+        presenter.onEventCompilar(body.getCodigoFuente(),body.getDireccionInicio());
         return obtenerAcciones(view,"id");
     }
     @RequestMapping("/mapeo")
