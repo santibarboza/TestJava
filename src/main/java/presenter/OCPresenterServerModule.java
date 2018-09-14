@@ -1,7 +1,7 @@
 package presenter;
 
 import model.*;
-import model.MemoriaMongo*;
+import model.MemoriaMongo.*;
 import view.*;
 import model.RepresentacionMemoria.*;
 
