@@ -25,12 +25,12 @@ import view.*;
 @RestController
 public class OCRestController {
 
-    @PostMapping("/compilarPost")
+    @PostMapping("/compilar")
     public List<Accion> compilarPost(@RequestBody BodyCompilado body) {
         OCPresenter presenter = OCPresenterServerModule.getInstance().startApplication();
         OCViewServer view=OCPresenterServerModule.getInstance().getOCView();
         presenter.onEventCompilar(body.getCodigoFuente(),body.getDireccionInicio());
-        return obtenerAcciones(view,"id");
+        return obtenerAcciones(view,getID());
     }
     @RequestMapping("/mapeo")
     public Map<Integer,String> mapeo(@RequestParam(value="id", defaultValue="World") String id) {
@@ -94,5 +94,8 @@ public class OCRestController {
         list.add(new AccionImp("setID",id));
         return list;
     }
-
+    private String getID(){
+        String aRetornar=java.util.UUID.randomUUID().toString();
+        return aRetornar;
+    }
 }
