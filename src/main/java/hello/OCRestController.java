@@ -74,7 +74,7 @@ public class OCRestController {
 
     @RequestMapping("/test3")
     public BodyCompilado test3(@RequestParam(value="id", defaultValue="111") String id) {
-        return new BodyCompilado("0E", "Codigo Milagroso") 
+        return new BodyCompilado("0E", "Codigo Milagroso");
 
     private List<Accion> obtenerAcciones(OCViewServer view, String id){
         List<Accion> list =view.obtenerAcciones();
