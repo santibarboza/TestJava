@@ -19,6 +19,7 @@ public class OCPresenterImpl implements OCPresenter {
 		OCPresenterImpl(OCModel ocModel) {
 			this.ocModel = ocModel;
 			this.enableLog=true;
+			updateArchivoActual("archivo","");
 		}
 		public void setOCView(OCView ocView) {
 			this.ocView = ocView;
