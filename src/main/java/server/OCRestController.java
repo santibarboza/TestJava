@@ -76,7 +76,7 @@ public class OCRestController {
         presenter.updatePCView("PCViejo");
         presenter.updatePCView("PCNuevo");
         presenter.updateLogs("LogNuevo");
-        return obtenerAcciones(view,id);
+        return obtener obtenerAccionesRealizadas(id);
     }
     @PostMapping("/test2")
     public BodyCompilado test2(@RequestBody BodyCompilado body) {
