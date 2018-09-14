@@ -67,6 +67,10 @@ public class OCRestController {
         presenter.updateLogs("LogNuevo");
         return obtenerAcciones(view,id);
     }
+    @PostMapping("/test2")
+    public BodyCompilado test2(@RequestBody BodyCompilado body) {
+        return body;
+    }
 
     private List<Accion> obtenerAcciones(OCViewServer view, String id){
         List<Accion> list =view.obtenerAcciones();
