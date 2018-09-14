@@ -25,7 +25,7 @@ import view.*;
 @RestController
 public class OCRestController {
 
-    @PostMapping("/compilar")
+    @PostMapping("/compilarPost")
     public List<Accion> compilarPost(@RequestBody BodyCompilado body) {
         OCPresenter presenter = OCPresenterServerModule.getInstance().startApplication();
         OCViewServer view=OCPresenterServerModule.getInstance().getOCView();
