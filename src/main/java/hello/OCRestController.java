@@ -6,6 +6,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import java.util.ArrayList;
 import java.util.List;
 import hello.Accion.*;
@@ -79,6 +80,10 @@ public class OCRestController {
 
     @PostMapping("/test4")
     public BodyCompilado test4(@ModelAttribute BodyCompilado body) {
+        return body;
+    }
+    @PostMapping("/test5")
+    public String test5(@RequestBody String body) {
         return body;
     }
     private List<Accion> obtenerAcciones(OCViewServer view, String id){
