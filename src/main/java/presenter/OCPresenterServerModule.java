@@ -1,6 +1,7 @@
 package presenter;
 
 import model.*;
+import model.MemoriaMongo*;
 import view.*;
 import model.RepresentacionMemoria.*;
 
@@ -32,9 +33,12 @@ public class OCPresenterServerModule {
 	  private void setPresenterToModel(OCPresenter presenter) {
 		  OCModelServerModule.getInstance().getOCModel().setOCPresenter(presenter);
 	  }
-	  public static Memoria getMemoria(){
-	  	return OCModelServerModule.getInstance().getMemoria();
+	  public static MemoriaMongo getMemoriaMongo(String id){
+	  	MemoriaMongoFactoryImp memoriafactory=new MemoriaMongoFactoryImp();
+	  	Memoria memoria= OCModelServerModule.getInstance().getMemoria();
+	  	return memoriafactory.iniciarMemoria(memoria,id);
 	  }
+
 	  public static OCViewServer getOCView(){
 	  	return OCViewServerModule.getInstance().getOCView();
 	  }

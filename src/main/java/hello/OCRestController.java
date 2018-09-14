@@ -26,11 +26,12 @@ import view.*;
 public class OCRestController {
 
     @PostMapping("/compilar")
-    public List<Accion> compilarPost(@RequestBody BodyCompilado body) {
+    public List<Accion> compilarPost(@RequestBody BodyCompilado body, @RequestParam(value="id") String id){
         OCPresenter presenter = OCPresenterServerModule.getInstance().startApplication();
         OCViewServer view=OCPresenterServerModule.getInstance().getOCView();
         presenter.onEventCompilar(body.getCodigoFuente(),body.getDireccionInicio());
-        return obtenerAcciones(view,getID());
+        guardarMemoria(id);
+        return obtenerAcciones(view,getID(id));
     }
     @RequestMapping("/mapeo")
     public Map<Integer,String> mapeo(@RequestParam(value="id", defaultValue="World") String id) {
@@ -94,8 +95,14 @@ public class OCRestController {
         list.add(new AccionImp("setID",id));
         return list;
     }
-    private String getID(){
-        String aRetornar=java.util.UUID.randomUUID().toString();
+    private String getID(String id){
+        String aRetornar=id;
+        if(id==null)
+            aRetornar=java.util.UUID.randomUUID().toString();
         return aRetornar;
+    }
+    private void guardarMemoria(String id){
+        MemoriaMongo memoriaMongo = OCPresenterServerModule.getMemoriaMongo(id);
+        memoriaMongo.guardarMemoria();
     }
 }
