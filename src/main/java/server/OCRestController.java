@@ -57,7 +57,7 @@ public class OCRestController {
         view=OCPresenterServerModule.getInstance().getOCView();
     }
     private void obtenerMemoriaMongo(String idUsuario){
-        memoriaMongo = OCPresenterServerModule.getMemoriaMongo(String id);
+        memoriaMongo = OCPresenterServerModule.getMemoriaMongo(idUsuario);
     }
     private void realizarcompilacion(BodyCompilado body){
         presenter.onEventCompilar(body.getCodigoFuente(),body.getDireccionInicio());  
