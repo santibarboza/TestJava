@@ -65,8 +65,7 @@ public class OCRestController {
         presenter.updatePCView("PCViejo");
         presenter.updatePCView("PCNuevo");
         presenter.updateLogs("LogNuevo");
-        logger.debug("I am in the controller");
-        return view.obtenerAcciones().add(new AccionCambio("setID",id));;
+        return view.obtenerAcciones().add(new AccionCambio("setID",id));
     }
 
 
