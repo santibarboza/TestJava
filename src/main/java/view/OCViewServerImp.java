@@ -4,44 +4,47 @@ import java.io.File;
 import java.util.Map;
 import java.util.List;
 import java.util.ArrayList;
-import hello.Accion.*;
+import server.Accion.*;
 import presenter.*;
 
 public class OCViewServerImp implements OCViewServer{
 	private OCPresenter ocPresenter;
+	private AccionFactory accionFactory;
 	protected List <Accion> accionesActuales;
 	protected String contenidoActual;
 
-	public OCViewServerImp(OCPresenter ocController) {
-	    this.ocPresenter = ocController;
+	public OCViewServerImp(OCPresenter ocPresenter, AccionFactory accionFactory){
+	    this.ocPresenter= ocPresenter;
+	    this.accionFactory= accionFactory;
 		accionesActuales= new ArrayList<Accion>();		
 	}
 	public void updateTextoTutorial(String texto){
-		accionesActuales.add(new AccionImp("Mostrar",texto));
+		accionesActuales.add(accionFactory.crearAccionDefault("Mostrar_Mensaje",texto));
 	}
 	public void updateContenidoArchivoActual(String contenido){
 		contenidoActual=contenido;
 	}
 	public void updateCodigoCompilado(String codigo){
-		accionesActuales.add(new AccionImp("Compilado",codigo));		
+		accionesActuales.add(accionFactory.crearAccionDefault("Codigo_Compilado",codigo));		
 	}
 	public void updateRegistros(Map<Integer,String> registros){
-		accionesActuales.add(new AccionCambio("updateRegistros",registros));	
+		accionesActuales.add(accionFactory.crearAccionCambio("Update_Registros",registros));	
 	}
 	public void updateMemoria(Map<Integer,String> memoria){
-		accionesActuales.add(new AccionCambio("updateMemoria",memoria));	
+		accionesActuales.add(accionFactory.crearAccionCambio("Update_Memoria",memoria));	
 	}
 	public void updatePCView(String pc){
-		accionesActuales.add(new AccionImp("SetPC",pc));		
+		accionesActuales.add(accionFactory.crearAccionDefault("Set_PC",pc));		
 	}
 	public void updateLogs(String log){
-		accionesActuales.add(new AccionImp("UpdateLogs",log));
+		accionesActuales.add(accionFactory.crearAccionDefault("Update_Logs",log));
 	}
 	public void mostrarMensaje(String mensaje){
-		accionesActuales.add(new AccionImp("Mostrar",mensaje));		
+		accionesActuales.add(accionFactory.crearAccionDefault("Mostrar_Mensaje",mensaje));		
 	}
-	public List<Accion> obtenerAcciones(){
+	public List<Accion> obtenerAcciones(String id){
 		List<Accion> retornar=accionesActuales;
+		retornar.add(accionFactory.crearAccionDefault("set_ID",id));
 		accionesActuales= new ArrayList<Accion>();
 		return retornar;	
 	}
