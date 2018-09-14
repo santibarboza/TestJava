@@ -28,11 +28,13 @@ public class OCRestController {
 
     @PostMapping("/compilar")
     public List<Accion> compilarPost(@RequestBody BodyCompilado body,@RequestParam(value="id", defaultValue="World") String id){
+        id=getID(id);
         OCPresenter presenter = OCPresenterServerModule.getInstance().startApplication();
         OCViewServer view=OCPresenterServerModule.getInstance().getOCView();
+        MemoriaMongo memoriaMongo = OCPresenterServerModule.getMemoriaMongo(id);
         presenter.onEventCompilar(body.getCodigoFuente(),body.getDireccionInicio());
-        guardarMemoria(id);
-        return obtenerAcciones(view,getID(id));
+        memoriaMongo.guardarMemoria();
+        return obtenerAcciones(view,id);
     }
     @RequestMapping("/mapeo")
     public Map<Integer,String> mapeo(@RequestParam(value="id", defaultValue="World") String id) {

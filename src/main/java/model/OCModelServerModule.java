@@ -38,7 +38,7 @@ public class OCModelServerModule {
 	    return ocModel;
 	  }
 	  public  Memoria getMemoria(){
-	  	return memoria;
+	  	return ejecucion.getMemoria();
 	  }
 
 }
