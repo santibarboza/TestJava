@@ -1,6 +1,7 @@
 package view;
 
 import presenter.OCPresenter;
+import server.Accion.*;
 
 
 public class OCViewServerModule {
@@ -17,7 +18,8 @@ public class OCViewServerModule {
 	  }
 
 	  public OCView openOCWindow(OCPresenter ocPresenter) {
-	    ocView= new OCViewServerImp(ocPresenter);
+	  	AccionFactory accionFactory= new AccionFactoryImp();
+	    ocView= new OCViewServerImp(ocPresenter,accionFactory);
 	    return ocView;
 	  }
 	  public  OCViewServer getOCView(){
