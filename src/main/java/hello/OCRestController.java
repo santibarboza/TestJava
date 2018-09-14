@@ -65,9 +65,13 @@ public class OCRestController {
         presenter.updatePCView("PCViejo");
         presenter.updatePCView("PCNuevo");
         presenter.updateLogs("LogNuevo");
-        return view.obtenerAcciones().add(new AccionImp("setID",id));
+        return obtenerAcciones(view,id);
     }
 
-
+    private List<Accion> obtenerAcciones(OCViewServer view, String id){
+        List<Accion> list =view.obtenerAcciones();
+        list.add(new AccionImp("setID",id));
+        return list;
+    }
 
 }
