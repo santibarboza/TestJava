@@ -25,9 +25,12 @@ import view.*;
 @RestController
 public class OCRestController {
 
-    @PostMapping("/compilarPost")
+    @PostMapping("/compilar")
     public Accion compilarPost(@RequestBody BodyCompilado body) {
-    	return new AccionImp("OK","Codigo Compilado esta Aqui");
+        OCPresenter presenter = OCPresenterServerModule.getInstance().startApplication();
+        OCViewServer view=OCPresenterServerModule.getInstance().getOCView();
+        presenter.onEventCompilar(body.getCodigoFuente(),body.getDireccionInicio());
+        return obtenerAcciones(view,"'id'");
     }
     @RequestMapping("/mapeo")
     public Map<Integer,String> mapeo(@RequestParam(value="id", defaultValue="World") String id) {
