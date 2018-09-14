@@ -27,7 +27,7 @@ import model.MemoriaMongo.*;
 public class OCRestController {
 
     @PostMapping("/compilar")
-    public List<Accion> compilarPost(@RequestBody BodyCompilado body, @RequestParam(value="id") String id){
+    public List<Accion> compilarPost(@RequestBody BodyCompilado body,(@RequestParam(value="id", defaultValue="World") String id){
         OCPresenter presenter = OCPresenterServerModule.getInstance().startApplication();
         OCViewServer view=OCPresenterServerModule.getInstance().getOCView();
         presenter.onEventCompilar(body.getCodigoFuente(),body.getDireccionInicio());
@@ -98,7 +98,7 @@ public class OCRestController {
     }
     private String getID(String id){
         String aRetornar=id;
-        if(id==null)
+        if(id.equals("World"))
             aRetornar=java.util.UUID.randomUUID().toString();
         return aRetornar;
     }
