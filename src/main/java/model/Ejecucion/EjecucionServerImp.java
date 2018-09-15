@@ -1,6 +1,9 @@
 package model.Ejecucion;
 
 public class EjecucionServerImp extends EjecucionImpl implements EjecucionServer{
+	public EjecucionImpl(Memoria memoria){
+		super(memoria);
+	}
 	public int getPC(){
 		return pc;
 	}
