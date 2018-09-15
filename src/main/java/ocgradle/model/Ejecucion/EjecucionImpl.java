@@ -9,12 +9,12 @@ public class EjecucionImpl implements Ejecucion{
 	
 	private OCModel ocModel;
 	private Memoria memoria;
-	private int pc,opcode,pcPAP;
+	protected int pc,opcode,pcPAP;
 	private int registroDIndex, registroSIndex, registroTIndex;
 	private int bufferRegistroD,bufferRegistroS,bufferRegistroT;
 	private int addr, offset,desplazamiento;
 	private boolean condicion;
-	private boolean noTerminoPrograma;
+	protected boolean noTerminoPrograma;
 
 	public EjecucionImpl(Memoria memoria){
 		this.memoria=memoria;
