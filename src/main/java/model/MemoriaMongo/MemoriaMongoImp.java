@@ -44,6 +44,7 @@ public class MemoriaMongoImp implements MemoriaMongo{
 		document.put("id_User", id);
 		document.put("memoria", crearMemoria());
 		document.put("registros", crearRegistros());
+		document.put("pc", crearPC());
 		coleccion.insert(document);
 		obtenerObjeto();
 	}
@@ -59,9 +60,13 @@ public class MemoriaMongoImp implements MemoriaMongo{
  			list.add(0);
  		return list;
 	}
+	private Integer crearPC(){
+ 		return new Integer(memoria.getDireccionInicio());
+	}
 	public void iniciar(){
 		iniciarMemoria();
 		iniciarRegistros();
+		iniciarEjecucion();
 	}
 	private void iniciarMemoria(){
 		ArrayList<Integer> memoriaDB= leermemoria();
@@ -79,13 +84,22 @@ public class MemoriaMongoImp implements MemoriaMongo{
 	private ArrayList<Integer> leerregistros(){
 		return (ArrayList<Integer>)objeto.get("registros");
 	}
+
+	private void iniciarEjecucion(){
+		Integer pc= leerPC();
+		ejecucion.setPC(pc.intValue());
+	}
+	private Integer leerPC(){
+		return (Integer)objeto.get("pc");
+	}
 	public Memoria getMemoria(){
 		return memoria;
 	}
 	public void guardarMemoria(){
 		ArrayList<Integer> memoriaList=obtenerMemoriaAGuardar();
 		ArrayList<Integer> registrosList=obtenerRegistrosAGuardar();
-		updateDB(memoriaList,registrosList);
+		Integer pc= obtenerPCaGuadar();
+		updateDB(memoriaList,registrosList,pc);
 	}
 
 	private ArrayList<Integer> obtenerMemoriaAGuardar(){
@@ -100,16 +114,20 @@ public class MemoriaMongoImp implements MemoriaMongo{
  			list.add(memoria.leerRegistro(i));
  		return list;
 	}
-	private void updateDB(ArrayList<Integer> memoriaDB,ArrayList<Integer>registrosDB){
+	private Integer obtenerPCaGuadar(){
+		return new Integer(ejecucion.getPC());
+	}
+	private void updateDB(ArrayList<Integer> memoriaDB,ArrayList<Integer>registrosDB,Integer pc){
 		BasicDBObject query = crearQuery();
-		BasicDBObject objetoNuevo = crearObjetoNuevo(memoriaDB,registrosDB);
+		BasicDBObject objetoNuevo = crearObjetoNuevo(memoriaDB,registrosDB,pc);
 		BasicDBObject updateObject = crearObjetoUpdate(objetoNuevo);
  		coleccion.update(query, updateObject);	
 	}
-	private BasicDBObject crearObjetoNuevo(ArrayList<Integer> memoriaDB,ArrayList<Integer>registrosDB){
+	private BasicDBObject crearObjetoNuevo(ArrayList<Integer> memoriaDB,ArrayList<Integer>registrosDB,Integer pc){
 		BasicDBObject objetoNuevo = new BasicDBObject();
 		objetoNuevo.put("memoria", memoriaDB);
 		objetoNuevo.put("registros", registrosDB);
+		objetoNuevo.put("pc", pc);
 		return objetoNuevo;
 	}
 	private BasicDBObject crearObjetoUpdate(BasicDBObject objetoNuevo){

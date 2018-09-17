@@ -7,9 +7,9 @@ public class EjecucionServerImp extends EjecucionImpl implements EjecucionServer
 		super(memoria);
 	}
 	public int getPC(){
-		return pc;
+		return pcPAP;
 	}
 	public void setPC(int pc){
-		this.pc=pc;
+		this.pcPAP=pc;
 	}
 }
