@@ -11,6 +11,7 @@ public class OCModelServerModule {
 	private static OCModelServerModule instance;
 	  private OCModel ocModel;
 	  private Memoria memoria;
+	  private EjecucionServer ejecucion;
 
 	  private OCModelServerModule() {
 		memoria=new MemoriaImpl(new MapFactoryImpl<Integer,String>());
@@ -21,7 +22,7 @@ public class OCModelServerModule {
 		AnalizadorSintacticoySemantico analizadorSintacticoySemantico=
 				new AnalizadorSintacticoySemanticoImpl(analizadorLexico,representacion);
 		ArchivoAbstractFactory archivosFactory= new ArchivoConcreteFactory();
-		Ejecucion ejecucion=new EjecucionImpl(memoria);
+		ejecucion=new EjecucionServerImpl(memoria);
 	    ocModel =  new OCModelImpl(analizadorLexico,
 	    		analizadorSintacticoySemantico,archivosFactory,ejecucion);
 	    ejecucion.setModel(ocModel);
@@ -37,8 +38,9 @@ public class OCModelServerModule {
 	  public OCModel getOCModel() {
 	    return ocModel;
 	  }
-	  public  Memoria getMemoria(){
-	  	return memoria;
+	  public  MemoriaMongo getMemoriaMongo(String id){
+	  	MemoriaMongoFactoryImp memoriafactory=new MemoriaMongoFactoryImp();
+	  	return memoriafactory.crearMemoriaMongo(ejecucion,id);
 	  }
 
 }

@@ -1,6 +1,6 @@
 package model.MemoriaMongo;
-import model.RepresentacionMemoria.Memoria;
+import model.Ejecucion.EjecucionServer;
 
 public interface MemoriaMongoFactory{
-	public MemoriaMongo crearMemoriaMongo(Memoria Memoria, String id);
+	public MemoriaMongo crearMemoriaMongo(EjecucionServer ejecucion, String id);
 }

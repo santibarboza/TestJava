@@ -34,9 +34,7 @@ public class OCPresenterServerModule {
 		  OCModelServerModule.getInstance().getOCModel().setOCPresenter(presenter);
 	  }
 	  public static MemoriaMongo getMemoriaMongo(String id){
-	  	MemoriaMongoFactoryImp memoriafactory=new MemoriaMongoFactoryImp();
-	  	Memoria memoria= OCModelServerModule.getInstance().getMemoria();
-	  	return memoriafactory.crearMemoriaMongo(memoria,id);
+	  	return OCModelServerModule.getInstance().getMemoriaMongo(id);
 	  }
 
 	  public static OCViewServer getOCView(){

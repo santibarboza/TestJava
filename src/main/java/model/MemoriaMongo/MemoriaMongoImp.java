@@ -3,6 +3,7 @@ import com.mongodb.*;
 import java.util.ArrayList;
 import java.util.List;
 import model.RepresentacionMemoria.*;
+import model.Ejecucion.*;
 import org.bson.Document;
 
 
@@ -12,9 +13,11 @@ public class MemoriaMongoImp implements MemoriaMongo{
 
 	protected DBObject objeto;
 	protected Memoria memoria;
+	protected EjecucionServer ejecucion;
 	
-	public MemoriaMongoImp(Memoria memoria, DBCollection coleccion,String id){
-		this.memoria=memoria;
+	public MemoriaMongoImp(EjecucionServer ejecucion, DBCollection coleccion,String id){
+		this.ejecucion=ejecucion;
+		this.memoria=ejecucion.getMemoria();
 		this.coleccion=coleccion;
 		this.id=id;
 		recuperarObjeto();
