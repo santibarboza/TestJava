@@ -6,6 +6,7 @@ import model.Archivos.*;
 import model.Ejecucion.*;
 import model.Mapeo.*;
 import model.RepresentacionMemoria.*;
+import model.MemoriaMongo.*;
 
 public class OCModelServerModule {
 	private static OCModelServerModule instance;
@@ -22,7 +23,7 @@ public class OCModelServerModule {
 		AnalizadorSintacticoySemantico analizadorSintacticoySemantico=
 				new AnalizadorSintacticoySemanticoImpl(analizadorLexico,representacion);
 		ArchivoAbstractFactory archivosFactory= new ArchivoConcreteFactory();
-		ejecucion=new EjecucionServerImpl(memoria);
+		ejecucion=new EjecucionServerImp(memoria);
 	    ocModel =  new OCModelImpl(analizadorLexico,
 	    		analizadorSintacticoySemantico,archivosFactory,ejecucion);
 	    ejecucion.setModel(ocModel);
