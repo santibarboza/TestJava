@@ -12,10 +12,14 @@ public class OCViewServerImp implements OCViewServer{
 	private AccionFactory accionFactory;
 	protected List <Accion> accionesActuales;
 	protected String contenidoActual;
+	protected boolean pudoLeer;
+	protected String valorLeido;
 
 	public OCViewServerImp(OCPresenter ocPresenter, AccionFactory accionFactory){
 	    this.ocPresenter= ocPresenter;
 	    this.accionFactory= accionFactory;
+	    this.pudoLeer=false;
+	    this.valorLeido="";
 		accionesActuales= new ArrayList<Accion>();		
 	}
 	public void updateTextoTutorial(String texto){
@@ -57,11 +61,22 @@ public class OCViewServerImp implements OCViewServer{
 		accionesActuales= new ArrayList<Accion>();
 		return retornar;	
 	}
-
+	public String pedirDialogo(String pedido){
+		String retorno="Invalido";
+		if(pudoLeer)
+			retorno= valorLeido;
+		else
+			accionesActuales.add(accionFactory.crearAccionDefault("LoadFF",pedido));
+		pudoLeer=false;
+		return retorno;
+	}
+	public void setLectura(String txt){
+		pudoLeer=true;
+		valorLeido=txt;
+	}
 
 	public void updateNombreArchivo(String fileName){}
 	public void updateInstrucionView(String instruccion){}
-	public String pedirDialogo(String pedido){return "";}
 	public boolean pedirAbrirArchivo(){return true;}
 	public boolean guardarArchivo(){return true;}
 	public File recuperarArchivo(){return null;}
@@ -71,4 +86,5 @@ public class OCViewServerImp implements OCViewServer{
 	public void mostrarMemoria(){}
 	public void mostrarAyuda(){}
 
+	
 }

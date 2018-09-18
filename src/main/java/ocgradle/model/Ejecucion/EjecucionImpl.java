@@ -9,7 +9,7 @@ public class EjecucionImpl implements Ejecucion{
 	
 	private OCModel ocModel;
 	private Memoria memoria;
-	protected int pc,opcode,pcPAP;
+	protected int pc, pcAnt,opcode,pcPAP;
 	private int registroDIndex, registroSIndex, registroTIndex;
 	private int bufferRegistroD,bufferRegistroS,bufferRegistroT;
 	private int addr, offset,desplazamiento;
@@ -56,6 +56,7 @@ public class EjecucionImpl implements Ejecucion{
 	}
 	private int fetch(){
 		int instruccion =(memoria.leerMemoria(pc) << 8)+ memoria.leerMemoria(pc+1);
+		pcAnt=pc;
 		pc = (pc + 2) & 255;
 		ocModel.updatePCView(pc+"");
 		ocModel.updateInstrucionView(memoria,pc);
@@ -216,10 +217,13 @@ public class EjecucionImpl implements Ejecucion{
 			String ax=ocModel.pedirDialogo("Ingrese un numero de 00 a FF:");
 			bufferRegistroD=Integer.parseInt(ax, 16);
 			}catch(NumberFormatException e){
+				pc=pcAnt;
 				throw new ErrorEjecucion("El numero ingresado no es valido");		
 			}
-			if(bufferRegistroD<0 || bufferRegistroD>255)
+			if(bufferRegistroD<0 || bufferRegistroD>255){
+				pc=pcAnt;
 				throw new ErrorEjecucion("Se ingreso un numero fuera de rango");
+			}
 	}
 
 	private void writeBack() {

@@ -51,6 +51,18 @@ public class OCRestController {
         guardarMemoria();
         return obtenerAccionesRealizadas(idUsuario);
     }
+    @RequestMapping("/setLectura")
+    public List<Accion> siguientePaso(@RequestParam(value="id") String idUsuario,@RequestParam(value="leer") String lectura) {
+        idUsuario=obtenerID(idUsuario);
+        iniciarAplicacion(idUsuario);
+        leerValor(lectura);
+        realizarSiguientePaso();
+        guardarMemoria();
+        return obtenerAccionesRealizadas(idUsuario);
+    }
+    private void leerValor(String lectura) {
+        view.setLectura(lectura);
+    }
     private String obtenerID(String id){
         if(esIDPorDefecto(id))
             return crearNuevaID();
