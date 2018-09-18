@@ -82,6 +82,9 @@ public class OCRestController {
     private void realizarIniciarEjecucion(){
         presenter.onEventEjecutar(false);
     }
+    private void realizarSiguientePaso(){
+        presenter.onEventSiguientePaso();
+    }
     private void guardarMemoria(){
         memoriaMongo.guardarMemoria(); 
     }
