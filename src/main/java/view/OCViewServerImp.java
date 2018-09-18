@@ -42,6 +42,15 @@ public class OCViewServerImp implements OCViewServer{
 	public void mostrarMensaje(String mensaje){
 		accionesActuales.add(accionFactory.crearAccionDefault("Mostrar_Mensaje",mensaje));		
 	}
+	public void habilitarOpcionesdeEjecucion(){
+		accionesActuales.add(accionFactory.crearAccionDefault("Habilitar_Ejecutar",""));	
+	}
+	public void habilitarOpcionesdeEjecucionPasoaPaso(){
+		accionesActuales.add(accionFactory.crearAccionDefault("Habilitar_Opciones_PAP",""));
+	}
+	public void deshabilitarOpcionesdeEjecucionPasoaPaso(){
+		accionesActuales.add(accionFactory.crearAccionDefault("Deshabilitar_Opciones_PAP",""));
+	}
 	public List<Accion> obtenerAcciones(String id){
 		List<Accion> retornar=accionesActuales;
 		retornar.add(accionFactory.crearAccionDefault("set_ID",id));
@@ -49,15 +58,13 @@ public class OCViewServerImp implements OCViewServer{
 		return retornar;	
 	}
 
+
 	public void updateNombreArchivo(String fileName){}
 	public void updateInstrucionView(String instruccion){}
 	public String pedirDialogo(String pedido){return "";}
 	public boolean pedirAbrirArchivo(){return true;}
 	public boolean guardarArchivo(){return true;}
 	public File recuperarArchivo(){return null;}
-	public void habilitarOpcionesdeEjecucion(){}
-	public void habilitarOpcionesdeEjecucionPasoaPaso(){}
-	public void deshabilitarOpcionesdeEjecucionPasoaPaso(){}
 	public void habilitarGuardarPanel(){}
 	public void deshabilitarGuardarPanel(){}
 	public void habilitarOpcionesdeCompilacion(){}

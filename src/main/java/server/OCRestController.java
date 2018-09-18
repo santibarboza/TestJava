@@ -34,6 +34,23 @@ public class OCRestController {
         guardarMemoria();
         return obtenerAccionesRealizadas(idUsuario);
     }
+
+    @RequestMapping("/iniciarEjecucion")
+    public List<Accion> iniciarEjecucion(@RequestParam(value="id") String idUsuario) {
+        idUsuario=obtenerID(idUsuario);
+        iniciarAplicacion(idUsuario);
+        realizarIniciarEjecucion();
+        guardarMemoria();
+        return obtenerAccionesRealizadas(idUsuario);
+    }
+    @RequestMapping("/siguientePaso")
+    public List<Accion> siguientePaso(@RequestParam(value="id") String idUsuario) {
+        idUsuario=obtenerID(idUsuario);
+        iniciarAplicacion(idUsuario);
+        realizarSiguientePaso();
+        guardarMemoria();
+        return obtenerAccionesRealizadas(idUsuario);
+    }
     private String obtenerID(String id){
         if(esIDPorDefecto(id))
             return crearNuevaID();
@@ -61,6 +78,9 @@ public class OCRestController {
     }
     private void realizarcompilacion(BodyCompilado body){
         presenter.onEventCompilar(body.getCodigoFuente(),body.getDireccionInicio());  
+    }
+    private void realizarIniciarEjecucion(){
+        presenter.onEventEjecutar(false);
     }
     private void guardarMemoria(){
         memoriaMongo.guardarMemoria(); 
