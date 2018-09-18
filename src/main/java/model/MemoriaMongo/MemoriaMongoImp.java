@@ -61,8 +61,8 @@ public class MemoriaMongoImp implements MemoriaMongo{
  			list.add(0);
  		return list;
 	}
-	private Integer crearPC(){
- 		return crearDireccionIincio;
+	private Integer crearPC(){	
+ 		return crearDireccionInicio();
 	}
 	private Integer crearDireccionInicio(){
  		return new Integer(memoria.getDireccionInicio());
