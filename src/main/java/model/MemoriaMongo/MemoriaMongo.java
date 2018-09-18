@@ -5,4 +5,5 @@ public interface MemoriaMongo{
 	public Memoria getMemoria();
 	public void iniciar();
 	public void guardarMemoria();
+	public void reiniciarMemoria();
 }

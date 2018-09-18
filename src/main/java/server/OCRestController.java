@@ -25,11 +25,12 @@ public class OCRestController {
     private OCPresenter presenter;
     private OCViewServer view;
     private MemoriaMongo memoriaMongo;
+    private BodyCompilado lastBody;
 
     @PostMapping("/compilar")
     public List<Accion> compilar(@RequestBody BodyCompilado body,@RequestParam(value="id", defaultValue="IdDefault") String idUsuario){
-        idUsuario=obtenerID(idUsuario);
         iniciarAplicacion(idUsuario);
+        reiniciarMemoria();
         realizarcompilacion(body);
         guardarMemoria();
         return obtenerAccionesRealizadas(idUsuario);
@@ -37,15 +38,14 @@ public class OCRestController {
 
     @RequestMapping("/iniciarEjecucion")
     public List<Accion> iniciarEjecucion(@RequestParam(value="id") String idUsuario) {
-        idUsuario=obtenerID(idUsuario);
         iniciarAplicacion(idUsuario);
+        reiniciarMemoria();
         realizarIniciarEjecucion();
         guardarMemoria();
         return obtenerAccionesRealizadas(idUsuario);
     }
     @RequestMapping("/siguientePaso")
     public List<Accion> siguientePaso(@RequestParam(value="id") String idUsuario) {
-        idUsuario=obtenerID(idUsuario);
         iniciarAplicacion(idUsuario);
         realizarSiguientePaso();
         guardarMemoria();
@@ -53,13 +53,17 @@ public class OCRestController {
     }
     @RequestMapping("/setLectura")
     public List<Accion> siguientePaso(@RequestParam(value="id") String idUsuario,@RequestParam(value="leer") String lectura) {
-        idUsuario=obtenerID(idUsuario);
         iniciarAplicacion(idUsuario);
         leerValor(lectura);
         realizarSiguientePaso();
         guardarMemoria();
         return obtenerAccionesRealizadas(idUsuario);
     }
+    @RequestMapping("/detenerEjecucion")
+    public List<Accion> detenerEjecucion(@RequestParam(value="id") String idUsuario) {
+        return compilar(lastBody,idUsuario);
+    }
+    
     private void leerValor(String lectura) {
         view.setLectura(lectura);
     }
@@ -74,7 +78,11 @@ public class OCRestController {
     private String crearNuevaID(){
         return java.util.UUID.randomUUID().toString();
     }
+    private void reiniciarMemoria(){
+        memoriaMongo.reiniciarMemoria();
+    }
     private void iniciarAplicacion(String idUsuario){
+        idUsuario=obtenerID(idUsuario);
         iniciarPresenter();
         obtenerView();
         obtenerMemoriaMongo(idUsuario);
@@ -89,6 +97,7 @@ public class OCRestController {
         memoriaMongo = OCPresenterServerModule.getMemoriaMongo(idUsuario);
     }
     private void realizarcompilacion(BodyCompilado body){
+        lastBody=body;
         presenter.onEventCompilar(body.getCodigoFuente(),body.getDireccionInicio());  
     }
     private void realizarIniciarEjecucion(){

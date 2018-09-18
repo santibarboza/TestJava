@@ -73,6 +73,15 @@ public class MemoriaMongoImp implements MemoriaMongo{
 		iniciarRegistros();
 		iniciarEjecucion();
 	}
+	public void reiniciarMemoria(){
+		eliminarObjeto();
+		recuperarObjeto();
+		iniciar();
+	}
+	private void eliminarObjeto(){
+		BasicDBObject query = crearQuery();
+		coleccion.remove(query);
+	}
 	private void iniciarDireccionInicio(){
 		int direccionInicio= leerDireccionInicio();
 		memoria.iniciar(direccionInicio);
