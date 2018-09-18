@@ -77,7 +77,7 @@ public class MemoriaMongoImp implements MemoriaMongo{
 		int direccionInicio= leerDireccionInicio();
 		memoria.iniciar(direccionInicio);
 	}
-	private int leerDireccionInicio()){
+	private int leerDireccionInicio(){
 		return ((Integer)objeto.get("direccionInicio")).intValue();
 	}
 	private void iniciarMemoria(){
