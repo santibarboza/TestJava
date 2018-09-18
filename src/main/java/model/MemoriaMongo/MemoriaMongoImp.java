@@ -45,6 +45,7 @@ public class MemoriaMongoImp implements MemoriaMongo{
 		document.put("memoria", crearMemoria());
 		document.put("registros", crearRegistros());
 		document.put("pc", crearPC());
+		document.put("direccionInicio", crearDireccionIncio())
 		coleccion.insert(document);
 		obtenerObjeto();
 	}
@@ -61,12 +62,23 @@ public class MemoriaMongoImp implements MemoriaMongo{
  		return list;
 	}
 	private Integer crearPC(){
+ 		return crearDireccionIncio;
+	}
+	private Integer crearDireccionIncio(){
  		return new Integer(memoria.getDireccionInicio());
 	}
 	public void iniciar(){
+		iniciarDireccionInicio();
 		iniciarMemoria();
 		iniciarRegistros();
 		iniciarEjecucion();
+	}
+	private void iniciarDireccionInicio(){
+		int direccionInicio= leerDireccionInicio();
+		memoria.iniciar(direccionInicio);
+	}
+	private int leerDireccionInicio()){
+		return ((Integer)objeto.get("direccionInicio")).intValue();
 	}
 	private void iniciarMemoria(){
 		ArrayList<Integer> memoriaDB= leermemoria();
