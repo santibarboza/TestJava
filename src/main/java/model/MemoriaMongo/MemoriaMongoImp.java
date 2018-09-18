@@ -111,7 +111,8 @@ public class MemoriaMongoImp implements MemoriaMongo{
 		ArrayList<Integer> memoriaList=obtenerMemoriaAGuardar();
 		ArrayList<Integer> registrosList=obtenerRegistrosAGuardar();
 		Integer pc= obtenerPCaGuadar();
-		updateDB(memoriaList,registrosList,pc);
+		Integer direccionInicio=crearDireccionInicio();
+		updateDB(memoriaList,registrosList,pc, direccionInicio);
 	}
 
 	private ArrayList<Integer> obtenerMemoriaAGuardar(){
@@ -129,17 +130,18 @@ public class MemoriaMongoImp implements MemoriaMongo{
 	private Integer obtenerPCaGuadar(){
 		return new Integer(ejecucion.getPC());
 	}
-	private void updateDB(ArrayList<Integer> memoriaDB,ArrayList<Integer>registrosDB,Integer pc){
+	private void updateDB(ArrayList<Integer> memoriaDB,ArrayList<Integer>registrosDB,Integer pc, Integer direccionInicio){
 		BasicDBObject query = crearQuery();
-		BasicDBObject objetoNuevo = crearObjetoNuevo(memoriaDB,registrosDB,pc);
+		BasicDBObject objetoNuevo = crearObjetoNuevo(memoriaDB,registrosDB,pc,direccionInicio);
 		BasicDBObject updateObject = crearObjetoUpdate(objetoNuevo);
  		coleccion.update(query, updateObject);	
 	}
-	private BasicDBObject crearObjetoNuevo(ArrayList<Integer> memoriaDB,ArrayList<Integer>registrosDB,Integer pc){
+	private BasicDBObject crearObjetoNuevo(ArrayList<Integer> memoriaDB,ArrayList<Integer>registrosDB,Integer pc,Integer direccionInicio){
 		BasicDBObject objetoNuevo = new BasicDBObject();
 		objetoNuevo.put("memoria", memoriaDB);
 		objetoNuevo.put("registros", registrosDB);
 		objetoNuevo.put("pc", pc);
+		objetoNuevo.put("direccionInicio", direccionInicio);
 		return objetoNuevo;
 	}
 	private BasicDBObject crearObjetoUpdate(BasicDBObject objetoNuevo){
