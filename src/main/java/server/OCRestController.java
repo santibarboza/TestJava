@@ -7,6 +7,7 @@ import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import java.util.ArrayList;
 import java.util.List;
 import server.Accion.*;
@@ -113,6 +114,8 @@ public class OCRestController {
         return view.obtenerAcciones(idUsuario);
     }
 
+
+    @CrossOrigin(origins = "*")
     @RequestMapping("/test1")
     public List<Accion> test1(@RequestParam(value="id", defaultValue="111") String id) {
         OCPresenter presenter = OCPresenterServerModule.getInstance().startApplication();
