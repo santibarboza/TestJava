@@ -127,6 +127,7 @@ public class OCRestController {
         return body;
     }
 
+    @CrossOrigin(origins = "https://santibarboza.github.io/")
     @RequestMapping("/test3")
     public BodyCompilado test3(@RequestParam(value="id", defaultValue="111") String id) {
         return new BodyCompilado("0E", "Codigo Milagroso");
