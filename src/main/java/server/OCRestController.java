@@ -40,7 +40,7 @@ public class OCRestController {
     @RequestMapping("/iniciarEjecucion")
     public List<Accion> iniciarEjecucion(@RequestParam(value="id") String idUsuario) {
         iniciarAplicacion(idUsuario);
-        reiniciarMemoria();
+        //iniciarMemoria();
         realizarIniciarEjecucion();
         guardarMemoria();
         return obtenerAccionesRealizadas(idUsuario);
