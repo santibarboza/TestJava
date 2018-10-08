@@ -20,7 +20,7 @@ import presenter.*;
 import view.*;
 import model.MemoriaMongo.*;
 
-
+@CrossOrigin(origins = "https://santibarboza.github.io/ocVue/")
 @RestController
 public class OCRestController {
     private OCPresenter presenter;
